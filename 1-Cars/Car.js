@@ -16,4 +16,4 @@ let car5 = new Car("Golf", "Volkswagen", 2021, "Hatchback", "Diesel");
 
 t.push(car1 , car2 , car3 , car4 , car5);
 
-console.log(t);
+
