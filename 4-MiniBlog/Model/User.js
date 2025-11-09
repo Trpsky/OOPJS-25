@@ -15,6 +15,9 @@ export default class User {
     email;
     password;
     constructor(first_name, last_name, email, password) {
+        if (this.checkIfEmailExists(email)) {
+            throw new Error("Email already exists!");
+        }
         this.id = users.length + 1;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -43,4 +46,7 @@ export default class User {
         // console.log("User stored:", newUser);
     }
 
+    checkIfEmailExists(email = "") {
+        return users.some(user => user.email === email);
+    }
 }
