@@ -27,7 +27,7 @@ export default class User {
     }
 
     index() {
-        return users.length;
+        return users;
     }
 
     store() {
