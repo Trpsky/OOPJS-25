@@ -17,4 +17,4 @@ console.log(p , p1);
 console.log("-----");
 
 let seg = new Segement(1,2,3,4);
-console.log(seg);
+console.log(seg.show());

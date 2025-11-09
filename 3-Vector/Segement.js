@@ -4,6 +4,10 @@ class Segement{
         this.origin = new Point(x_origin , y_origin);
         this.exterm = new Point(x_exterm , y_exterm);
     }
+
+    show(){
+        return `Origin : (${this.origin.x} , ${this.origin.y}) , Exterm : (${this.exterm.x} , ${this.exterm.y})`;
+    }
 }
 
 export default Segement;
