@@ -49,4 +49,11 @@ export default class User {
     checkIfEmailExists(email = "") {
         return users.some(user => user.email === email);
     }
+    static login(email, password) {
+        let user = users.find(user => user.email === email && user.password === password);
+        if (user) {
+            return true
+        }
+        return false;
+    }
 }
