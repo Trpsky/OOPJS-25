@@ -1,23 +1,23 @@
 import Post from '../Model/Post.js';
-class PostController {
-    constructor(formElement) {
+export default class PostController {
+    constructor(formElement, e) {
         this.formElement = formElement;
-        this.initialize();
+        this.event = e;
     }
 
     initialize() {
-        this.formElement.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(this.formElement);
-            const user_id = formData.get('user_id');
-            const title = formData.get('title');
-            const description = formData.get('description');
-            console.log('Form Data:', { user_id, title, description });
-        });
+        console.log("PostController Initialized");
+        this.event.preventDefault();
+        const formData = new FormData(this.formElement);
+        const user_id = formData.get('user_id');
+        const title = formData.get('title');
+        const description = formData.get('description');
+        console.log('Form Data:', { user_id, title, description });
+        return formData;
     }
 
-    insertPost(formData) {
-        this.initialize();
+    insertPost() {
+        let formData = this.initialize();
         let post = new Post(
             formData.get('user_id'),
             formData.get('title'),
@@ -28,4 +28,3 @@ class PostController {
         return newPost;
     }
 }
-export default PostController;
