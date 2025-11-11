@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <script src="./Controller/PostController.js"></script>
+    <!-- <script  type="module" src="./Controller/PostController.js"></script> -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -136,7 +136,7 @@
                         <textarea name="description" rows="5" placeholder="Write something interesting..."
                             class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 p-2.5"></textarea>
                     </div>
-                    <button id="submit"
+                    <button id="submit" type="submit"
                         class="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-medium hover:bg-indigo-700 transition">
                         Publish Post
                     </button>
@@ -144,7 +144,8 @@
             </div>
         </div>
     </div>
-    <script>
+    <script type="module">
+        import PostController from "./Controller/PostController.js";
         const addPostBtn = document.getElementById("addPostBtn");
         const closeFormBtn = document.getElementById("closeFormBtn");
         const blogTable = document.getElementById("blogTable");
@@ -162,11 +163,11 @@
             blogTable.classList.remove("hidden");
         });
 
-        submitBtn.addEventListener("click", () => {
+        submitBtn.addEventListener("click", (e) => {
             console.log("Initialize");
              e.preventDefault();
-            let Controller = new PostController(postForm , e);
-            controller.initialize();
+            let controller = new PostController(postForm ,e);
+            controller.insertPost();
         });
 
 
