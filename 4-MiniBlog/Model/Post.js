@@ -20,7 +20,7 @@ export default class Post {
     }
 
     index(user_id) {
-        const posts = JSON.parse(localStorage.getItem("posts")) || [];
+        let posts = JSON.parse(localStorage.getItem("posts")) || [];
         posts = posts.filter(post => post.user_id === user_id);
         return posts;
     }
