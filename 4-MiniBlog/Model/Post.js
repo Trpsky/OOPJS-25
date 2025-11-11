@@ -1,30 +1,32 @@
 import posts from '../database/post.json' with  { type: 'json' };
 
-import { writeFileSync } from 'fs';
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const usersPath = resolve(__dirname, '../database/post.json');
-export default class Post{
+export default class Post {
     user_id;
-    title; 
+    title;
     description;
     created_at;
-    constructor(user_id, title, description){  
-        this.id = posts.length + 1; 
+    constructor(user_id, title, description) {
+        this.id = posts.length + 1;
         this.user_id = user_id;
         this.title = title;
         this.description = description;
         this.created_at = new Date();
     }
-    index(user_id){
+
+    static async loadJSONToLocalStorage() {
+        const res = await fetch(posts);
+        const json = await res.json();
+        localStorage.setItem('posts', JSON.stringify(json));
+    }
+
+    index(user_id) {
+        const posts = JSON.parse(localStorage.getItem("posts")) || [];
         posts = posts.filter(post => post.user_id === user_id);
         return posts;
     }
 
-    store(){
+    store() {
+        const posts = JSON.parse(localStorage.getItem("posts")) || [];
         let newPost = {
             "user_id": this.user_id,
             "title": this.title,
@@ -32,9 +34,7 @@ export default class Post{
             "created_at": this.created_at
         };
         posts.push(newPost);
-
-        writeFileSync(usersPath, JSON.stringify(posts, null, 2));
-
+        localStorage.setItem("posts", JSON.stringify(posts));
         return newPost;
     }
 }
