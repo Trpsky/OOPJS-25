@@ -50,8 +50,7 @@
                             <a href="#"
                                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Login</a>
                             <a href="#"
-                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Sign
-                                up</a>
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Signup</a>
                         </div>
                     </div>
                 </div>
@@ -113,6 +112,7 @@
                             </td>
                         </tr> -->
                     </tbody>
+
                 </table>
             </div>
         </div>
@@ -148,15 +148,23 @@
 
         document.addEventListener("DOMContentLoaded", async () => {
             console.log("DOM fully loaded and parsed");
+            await loadJsonData();
+        });
+
+        function loadJsonData() {
             PostController.loadJSONToLocalStorage();
             console.log("JSON data loaded into localStorage");
             let user_id = localStorage.getItem("user_id") || 1;
             var posts = PostController.renderPosts(user_id);
             console.log('Posts:', posts);
+            const TBODY = document.getElementById("body-table");
+            if (TBODY.hasChildNodes()) {
+                TBODY.innerHTML = "";
+            }
             posts.forEach(post => {
                 createTableBody(post);
             });
-        });
+        }
 
         function createTableBody(post) {
             const TBODY = document.getElementById("body-table");
@@ -196,6 +204,9 @@
             e.preventDefault();
             let controller = new PostController(postForm, e);
             controller.insertPost(e);
+            loadJsonData();
+            blogForm.classList.add("hidden");
+            blogTable.classList.remove("hidden");
         });
 
 
