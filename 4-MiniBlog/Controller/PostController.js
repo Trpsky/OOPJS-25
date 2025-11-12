@@ -33,8 +33,6 @@ export default class PostController {
         );
         let newPost = post.store();
         console.log('New Post Created:', newPost);
-        console.log(e);
-        this.form.reset();
         return newPost;
     }
 
