@@ -37,9 +37,7 @@ export default class PostController {
     }
 
     static renderPosts(user_id) {
-        const post = new Post();
-        const posts = post.index(user_id);
-        console.log('Posts for User ID', user_id, ':', posts);
+        const posts = Post.index(user_id);
         return posts;
     }   
 }

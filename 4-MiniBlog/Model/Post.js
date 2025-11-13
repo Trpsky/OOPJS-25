@@ -19,9 +19,9 @@ export default class Post {
         localStorage.setItem('posts', JSON.stringify(json));
     }
 
-    index(user_id) {
+    static index(user_id) {
         let posts = JSON.parse(localStorage.getItem("posts")) || [];
-        posts = posts.filter(post => post.user_id === user_id);
+        posts = posts.filter(post => post.user_id == user_id);
         return posts;
     }
 
