@@ -1,0 +1,12 @@
+import booksManagment from "./BookManagment.js";
+import borrowManagment from "./BorrowManagment.js";
+import categoryManagment from "./CategoryManagment.js";
+console.log("--------------------------------");
+console.log("Book managment");
+booksManagment();
+console.log("--------------------------------");
+console.log("Category managment");
+categoryManagment();
+console.log("--------------------------------");
+console.log("Borrow managment");
+borrowManagment();
