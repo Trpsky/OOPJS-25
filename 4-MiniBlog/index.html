@@ -47,10 +47,8 @@
                         <div class="flex space-x-4">
                             <a href="#" aria-current="page"
                                 class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">My blogs</a>
-                            <a href="#"
-                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Login</a>
-                            <a href="#"
-                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Signup</a>
+                            <a href="./login.html"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -59,13 +57,9 @@
         <el-disclosure id="mobile-menu" hidden class="block sm:hidden">
             <div class="space-y-1 px-2 pt-2 pb-3">
                 <a href="#" aria-current="page"
-                    class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white">Dashboard</a>
-                <a href="#"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Team</a>
-                <a href="#"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Projects</a>
-                <a href="#"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Calendar</a>
+                    class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white">My blogs</a>
+                <a href="./login.html"
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Logout</a>
             </div>
         </el-disclosure>
     </nav>
@@ -176,8 +170,8 @@
             TD.textContent = post.description;
             const TR = document.createElement("tr");
             TR.setAttribute("class", "bg-white border-b border-gray-200 hover:bg-gray-50");
-            TR.appendChild(TD);
             TR.appendChild(TH);
+            TR.appendChild(TD);
             TBODY.appendChild(TR);
         }
 
