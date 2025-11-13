@@ -24,7 +24,7 @@ export default class PostController {
         return formData;
     }
 
-    insertPost(e) {
+    insertPost() {
         let formData = this.initialize();
         let post = new Post(
             formData.get('user_id') || 1,
