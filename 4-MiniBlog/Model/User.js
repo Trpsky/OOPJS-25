@@ -1,12 +1,4 @@
-import users from '../database/user.json' with  { type: 'json' };
-
-import { writeFileSync } from 'fs';
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const usersPath = resolve(__dirname, '../database/user.json');
+import usersJson from '../database/user.json' with  { type: 'json' };
 
 export default class User {
     id;
@@ -26,11 +18,19 @@ export default class User {
         console.log("User created:", this.first_name, this.last_name);
     }
 
+    static async loadJSONToLocalStorage() {
+        const res = await fetch(usersJson);
+        const json = await res.json();
+        localStorage.setItem('users', JSON.stringify(json));
+    }
+
     index() {
+        let users = JSON.parse(localStorage.getItem("users")) || [];
         return users;
     }
 
     store() {
+        let users = this.index();
         let newUser = {
             "id": this.id,
             "first_name": this.first_name,
@@ -40,16 +40,18 @@ export default class User {
         };
         users.push(newUser);
 
-        writeFileSync(usersPath, JSON.stringify(users, null, 2));
+        localStorage.setItem("users", JSON.stringify(users));
 
         return newUser;
         // console.log("User stored:", newUser);
     }
 
     checkIfEmailExists(email = "") {
+        let users = this.index();
         return users.some(user => user.email === email);
     }
     static login(email, password) {
+        let users = this.index();
         let user = users.find(user => user.email === email && user.password === password);
         if (user) {
             return true
