@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- <script  type="module" src="./Controller/PostController.js"></script> -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="relative bg-gray-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button type="button" command="--toggle" commandfor="mobile-menu"
+                        class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
+                        <span class="absolute -inset-0.5"></span>
+                        <span class="sr-only">Open main menu</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
+                            aria-hidden="true" class="size-6 in-aria-expanded:hidden">
+                            <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
+                            aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
+                            <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex shrink-0 items-center">
+                        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+                            alt="Your Company" class="h-8 w-auto" />
+                    </div>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                            <a href="./login.html"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <el-disclosure id="mobile-menu" hidden class="block sm:hidden">
+            <div class="space-y-1 px-2 pt-2 pb-3">
+                <a href="#" aria-current="page"
+                    class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white">My blogs</a>
+                <a href="./login.html"
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Login</a>
+            </div>
+        </el-disclosure>
+    </nav>
+
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+            <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company"
+                class="mx-auto h-10 w-auto" />
+            <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your account</h2>
+        </div>
+
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <form id="signUpForm" method="POST" class="space-y-6">
+
+                <div>
+                    <label for="first_name" class="block text-sm/6 font-medium text-gray-900">First name</label>
+                    <div class="mt-2">
+                        <input id="first_name" type="text" name="first_name" required autocomplete="email"
+                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                    </div>
+                </div>
+
+                <div>
+                    <label for="last_name" class="block text-sm/6 font-medium text-gray-900">Last name</label>
+                    <div class="mt-2">
+                        <input id="last_name" type="text" name="last_name" required autocomplete="email"
+                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
+                    <div class="mt-2">
+                        <input id="email" type="email" name="email" required autocomplete="email"
+                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center justify-between">
+                        <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
+                        <!-- <div class="text-sm">
+                            <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+                        </div> -->
+                    </div>
+                    <div class="mt-2">
+                        <input id="password" type="password" name="password" required autocomplete="current-password"
+                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" id="submit"
+                        class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign
+                        in</button>
+                </div>
+            </form>
+
+            <p class="mt-10 text-center text-sm/6 text-gray-500">
+                Already a member?
+                <a href="./login.html" class="font-semibold text-indigo-600 hover:text-indigo-500">Sign in</a>
+            </p>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+<script type="module">
+    document.addEventListener("DOMContentLoaded", async () => {
+        console.log("DOM fully loaded and parsed");
+    });
+
+    import UserController from "./Controller/UserController.js";
+    const SUBMITBTN = document.getElementById("submit");
+
+</script>
+
+</html>
