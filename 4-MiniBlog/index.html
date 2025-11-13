@@ -47,8 +47,8 @@
                         <div class="flex space-x-4">
                             <a href="#" aria-current="page"
                                 class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">My blogs</a>
-                            <a href="./login.html"
-                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Logout</a>
+                            <a id="logout"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white cursor-pointer">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -139,11 +139,18 @@
         </div>
     </div>
     <script type="module">
-
+        import requireLogin from "./Middleware/AuthMiddleware.js"
         document.addEventListener("DOMContentLoaded", async () => {
             console.log("DOM fully loaded and parsed");
+            await requireLogin();
             await loadJsonData();
         });
+
+        const LOGOUT = document.getElementById("logout");
+        LOGOUT.addEventListener("click" , () => {
+            localStorage.setItem("user_id" , null);
+            window.location.href = "./login.html"
+        })
 
         function loadJsonData() {
             PostController.loadJSONToLocalStorage();
@@ -196,8 +203,8 @@
         submitBtn.addEventListener("click", (e) => {
             console.log("Initialize");
             e.preventDefault();
-            let controller = new PostController(postForm, e);
-            controller.insertPost(e);
+            const postController = new PostController(postForm, e);
+            postController.insertPost();
             loadJsonData();
             blogForm.classList.add("hidden");
             blogTable.classList.remove("hidden");
