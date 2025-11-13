@@ -7,9 +7,8 @@ export default class User {
     email;
     password;
     constructor(first_name, last_name, email, password) {
-        if (this.checkIfEmailExists(email)) {
-            throw new Error("Email already exists!");
-        }
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        console.log(users.length);
         this.id = users.length + 1;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -24,13 +23,14 @@ export default class User {
         localStorage.setItem('users', JSON.stringify(json));
     }
 
-    index() {
+    static index() {
         let users = JSON.parse(localStorage.getItem("users")) || [];
         return users;
     }
 
     store() {
-        let users = this.index();
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
         let newUser = {
             "id": this.id,
             "first_name": this.first_name,
@@ -38,24 +38,32 @@ export default class User {
             "email": this.email,
             "password": this.password
         };
+
         users.push(newUser);
 
         localStorage.setItem("users", JSON.stringify(users));
 
-        return newUser;
-        // console.log("User stored:", newUser);
+        return {
+            "success" : true,
+            "user" : newUser
+        };
     }
 
-    checkIfEmailExists(email = "") {
-        let users = this.index();
+    static checkIfEmailExists(email = "") {
+        let users = User.index();
         return users.some(user => user.email === email);
     }
     static login(email, password) {
-        let users = this.index();
+        let users = User.index();
         let user = users.find(user => user.email === email && user.password === password);
         if (user) {
-            return true
+            return {
+                "user_id": user.id,
+                "success": true
+            }
         }
-        return false;
+        return {
+            "success": false
+        }
     }
 }
