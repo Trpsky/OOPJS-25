@@ -10,12 +10,13 @@ The goal is to practice **Object-Oriented Programming (OOP)** in **JavaScript (E
 
 ## 📁 Project Structure
 
+```bash
 ├── 1-Cars
 ├── 2-Student
 ├── 3-Vector
 ├── 4-MiniBlog
 └── 5-LibraryManagment
-
+```
 
 Each folder corresponds to one exercise of the atelier.
 
