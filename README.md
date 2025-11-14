@@ -17,9 +17,37 @@ The goal is to practice **Object-Oriented Programming (OOP)** in **JavaScript (E
     ├── Hyndai.js
     ├── script.js
 ├── 2-Student
+     ├── script.js
 ├── 3-Vector
+    ├── Point
+        ├── Point.js
+        ├── Sqaure.js
+    ├── Shapes
+        ├── Rectangle.js
+        ├── Sqaure.js
+    ├── Vector2D
+        ├── Vector2D.js
+    ├── script.js
 ├── 4-MiniBlog
+    ├── Controller
+        ├── PostController.js
+        ├── UserController.js
+    ├── database
+        ├── post.json
+        ├── user.json
+    ├── Middleware
+        ├── AuthMiddleware.js
+    ├── Model
+        ├── Post.js
+        ├── User.js
+    ├── index.html
+    ├── login.html
+    ├── signup.html
 └── 5-LibraryManagment
+    ├── BookManagment.js
+    ├── BorrowManagment.js
+    ├── CategoryManagment.js
+    ├── script.js
 ```
 
 Each folder corresponds to one exercise of the atelier.
