@@ -17,19 +17,22 @@ export default class PostController {
         console.log("PostController Initialized");
         this.event.preventDefault();
         const formData = new FormData(this.formElement);
-        const user_id = formData.get('user_id');
+        const user_id = localStorage.getItem("user_id");
         const title = formData.get('title');
         const description = formData.get('description');
         console.log('Form Data:', { user_id, title, description });
-        return formData;
+        return {
+            "formData": formData,
+            "user_id": user_id
+        };
     }
 
     insertPost() {
-        let formData = this.initialize();
+        let response = this.initialize();
         let post = new Post(
-            formData.get('user_id') || 1,
-            formData.get('title'),
-            formData.get('description')
+            response.user_id,
+            response.formData.get('title'),
+            response.formData.get('description')
         );
         let newPost = post.store();
         console.log('New Post Created:', newPost);
@@ -39,5 +42,5 @@ export default class PostController {
     static renderPosts(user_id) {
         const posts = Post.index(user_id);
         return posts;
-    }   
+    }
 }
