@@ -14,8 +14,6 @@ export default class PostController {
     }
 
     initialize() {
-        console.log("PostController Initialized");
-        this.event.preventDefault();
         const formData = new FormData(this.formElement);
         const user_id = localStorage.getItem("user_id");
         const title = formData.get('title');

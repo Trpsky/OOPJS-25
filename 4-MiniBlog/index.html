@@ -202,7 +202,6 @@
 
         submitBtn.addEventListener("click", (e) => {
             console.log("Initialize");
-            e.preventDefault();
             const postController = new PostController(postForm, e);
             postController.insertPost();
             loadJsonData();
